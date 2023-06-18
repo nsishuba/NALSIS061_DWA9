@@ -1,5 +1,3 @@
-// export {BOOKS_PER_PAGE, authors, genres, books} 
-
 export const BOOKS_PER_PAGE = 36;
 
 export const authors = {

@@ -6,51 +6,21 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from './modules/data.js';
 import { createOptionsFactory } from './modules/createOptions.js';
 import { setTheme } from './modules/theme.js';
+import { BookPreview } from './components/book-preview.js';
 // import { getHtml } from './modules/helpers.js'
 
 let page = 1;
 let matches = books
 
-// //Creates a list of preview elements and appends them to the document
-// class listPreview extends HTMLElement {
-//     constructor() {
-//         super();
-        
+// const createPreview = () => {
+//     for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
+//         BookPreview.prototype
 //     }
-//     connectedCallback() {
 
-//         const createPreview = () => {
-
-//         // const fragment = document.createDocumentFragment()
-//              for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
-//                     const element = document.createElement('button')
-//                     element.classList = 'preview'
-//                     element.setAttribute('data-preview', id)
-//                     element.innerHTML = `
-//                         <img
-//                             class="preview__image"
-//                             src="${image}"
-//                         />
-                        
-//                         <div class="preview__info">
-//                             <h3 class="preview__title">${title}</h3>
-//                             <div class="preview__author">${authors[author]}</div>
-//                         </div>
-//                     `
-
-//                     fragment.appendChild(element)
-//             }
-//                     return fragment;
-//         }
-        
-//     }
-    
-    
 // }
-//encapsulation
-// const listPreviewFactory = createPreviewFactory();
-// const listPreviewFragment = listPreviewFactory.createPreview();
-document.querySelector('[data-list-items]').appendChild() //call function
+
+let bookpreview = new BookPreview
+document.querySelector('[data-list-items]').appendChild(bookpreview) //call function
 //encapsulation
 const optionsFactory = createOptionsFactory();
 
@@ -145,7 +115,7 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
 
     document.querySelector('[data-list-items]').innerHTML = ''
 
-    document.querySelector('[data-list-items]').appendChild(createPreview()) //call function
+    document.querySelector('[data-list-items]').appendChild(bookpreview) //call function
     document.querySelector('[data-list-button]').disabled = (matches.length - (page * BOOKS_PER_PAGE)) < 1
 
     document.querySelector('[data-list-button]').innerHTML = `
@@ -158,7 +128,7 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
 })
 
 document.querySelector('[data-list-button]').addEventListener('click', () => {
-    document.querySelector('[data-list-items]').appendChild(createPreview()) //call function
+    document.querySelector('[data-list-items]').appendChild(bookpreview) //call function
     page += 1
 })
 
