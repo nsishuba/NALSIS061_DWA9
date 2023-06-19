@@ -1,7 +1,7 @@
-import { books, authors, BOOKS_PER_PAGE } from '/modules/data.js'
-
-const template = document.createElement('template');
-    template.innerHTML = `
+import { books, authors, BOOKS_PER_PAGE } from "../modules/data.js";
+// console.log(books);
+const template = document.createElement("template");
+template.innerHTML = `
     <style>
     .preview {
         border-width: 0;
@@ -63,34 +63,34 @@ const template = document.createElement('template');
     <button class="preview" data-preview="id">
             <img
                 class="preview__image"
+                src="${image}"
             />
             <div class="preview__info">
-                <h3 class="preview__title"></h3>
-                <div class="preview__author"></div>
+                <h3 class="preview__title">${title}</h3>
+                <div class="preview__author">${authors[author]}</div>
             </div>
     </button>
-    `
-;
+    `;
 
 export class BookPreview extends HTMLElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-        // this.setAttribute('data-preview', 'id')
-    }
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    // this.setAttribute('data-preview', 'id')
+  }
 
-    connectedCallBack() {
-        let matches = books;
-        for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
-            this.shadowRoot.querySelector('[preview__image]').src = `${image}`;
-            this.shadowRoot.querySelector('[preview__title]').innerHTML = `${title}`;  
-            this.shadowRoot.querySelector('[preview__author]').innerHTML = `${authors[author]}`;
-            // this.shadowRoot.setAttribute('[data-preview]', 'id')
-
-        }
-    }
+  connectedCallBack() {
+    console.log(books);
+    // let matches = books;
+    // for (const { author, id, image, title } of matches.slice(
+    //   0,
+    //   BOOKS_PER_PAGE
+    // )) {
+    
+    // }
+  }
 }
 
-window.customElements.define('book-preview', BookPreview);
+window.customElements.define("book-preview", BookPreview);
